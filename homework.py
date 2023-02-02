@@ -36,7 +36,7 @@ class Training:
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        return action * LEN_STEP / M_IN_KM
+        return self.action * LEN_STEP / M_IN_KM
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
@@ -117,19 +117,24 @@ class Swimming(Training):
             return ((self.get_mean_speed() + self.CALORIES_MEAN_SPEED_SHIF2)
                 * self.CALORIES_MEAN_SPEED_MULTI * self.weight * self.duration)
 
-
-def read_package(workout_type: str, data: list) -> Training:
-    """Прочитать данные полученные от датчиков."""
-    training_classes = {
+training_classes = {
         'RUN': Running,
         'WLK': SportsWalking,
         'SWM': Swimming
     }
 
+def read_package(workout_type: str, data: list) -> Training:
+    """Прочитать данные полученные от датчиков."""
+   
+
     current_code = list(training_classes)
     for i in current_code:
         current_training = training_classes[i]()
-        return (training_classes[i])
+        return current_training.__class__.__name__
+
+    if 'RUN' or 'WLK' or 'SWM' in super().current_code():
+        return a
+        
 
     
 
