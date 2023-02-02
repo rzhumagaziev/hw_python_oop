@@ -132,13 +132,6 @@ def read_package(workout_type: str, data: list) -> Training:
         current_training = training_classes[i]()
         return current_training.__class__.__name__
 
-    if 'RUN' or 'WLK' or 'SWM' in super().current_code():
-        return a
-        
-
-    
-
-
 def main(training: Training) -> None:
     """Главная функция."""
     info = Training.show_training_info().get_message()
