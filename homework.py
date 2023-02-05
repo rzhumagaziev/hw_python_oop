@@ -35,7 +35,7 @@ class Training:
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        return self.action * self.LEN_STEP / self.M_IN_KM
+        return (self.action * self.LEN_STEP)/self.M_IN_KM
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
@@ -47,7 +47,7 @@ class Training:
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        message: InfoMessage(
+        message: str = InfoMessage(
             self.__class__.__name__,
             self.duration,
             self.get_distance(),
@@ -124,10 +124,7 @@ training_classes = {
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    for workout_type, data in packages:
-        return workout_type
-        return data
-    print(training_classes[workout_type](*data))
+    return(training_classes[workout_type](*data))
 
 
     #current_code = list(training_classes)
@@ -135,7 +132,7 @@ def read_package(workout_type: str, data: list) -> Training:
         #current_training = training_classes[i]()
         #return current_training.__class__.__name__
 
-def main(training: Training) -> str:
+def main(training: Training) -> None:
     """Главная функция."""
     info = training.show_training_info()
     info_result = info.get_message()
