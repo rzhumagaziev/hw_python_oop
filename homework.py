@@ -125,17 +125,22 @@ training_classes = {
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-   
+    for workout_type, data in packages:
+        return workout_type
+        return data
+    print(training_classes[workout_type](*data))
 
-    current_code = list(training_classes)
-    for i in current_code:
-        current_training = training_classes[i]()
-        return current_training.__class__.__name__
 
-def main(training: Training) -> None:
+    #current_code = list(training_classes)
+    #for i in current_code:
+        #current_training = training_classes[i]()
+        #return current_training.__class__.__name__
+
+def main(training: Training) -> str:
     """Главная функция."""
-    info = Training.show_training_info().get_message()
-    return print(info)
+    info = training.show_training_info()
+    info_result = info.get_message()
+    print(info_result)
 
 
 if __name__ == '__main__':
