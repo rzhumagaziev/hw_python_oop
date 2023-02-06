@@ -35,6 +35,7 @@ class Training:
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
+        print(self.action)
         return (self.action * self.LEN_STEP)/self.M_IN_KM
 
     def get_mean_speed(self) -> float:
@@ -124,7 +125,8 @@ training_classes = {
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    return(training_classes[workout_type](*data))
+    training = training_classes[workout_type](*data)
+    return training
 
 
     #current_code = list(training_classes)

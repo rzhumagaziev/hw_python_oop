@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+# Dev/yatube_project/.gitignore
+
+.vscode/
+
 # C extensions
 *.so
 
