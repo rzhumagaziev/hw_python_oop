@@ -1,17 +1,13 @@
-class InfoMessage:
-    """Информационное сообщение о тренировке."""
-    def __init__(self,
-                 training_type: str,
-                 duration: float,
-                 distance: float,
-                 speed: float,
-                 calories: float) -> None:
+from dataclasses import dataclass
 
-        self.training_type = training_type
-        self.duration = duration
-        self.distance = distance
-        self.speed = speed
-        self.calories = calories
+
+@dataclass
+class InfoMessage:
+    training_type: str
+    duration: float
+    distance: float
+    speed: float
+    calories: float
 
     def get_message(self) -> str:
         return (f'Тип тренировки: {self.training_type}; '
@@ -146,8 +142,12 @@ training_classes = {
 def read_package(workout_type: str,
                  data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    training = training_classes[workout_type](*data)
-    return training
+
+    if workout_type in training_classes:
+        training = training_classes[workout_type](*data)
+        return training
+    else:
+        print('Неизвестный тип тренировки')
 
 
 def main(training: Training) -> None:
