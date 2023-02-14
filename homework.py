@@ -142,13 +142,12 @@ training_classes = {
 def read_package(workout_type: str,
                  data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
-    
+
     if workout_type in training_classes:
         training = training_classes[workout_type](*data)
         return training
     else:
         print('Неверный тип тренировки!')
-    
 
 
 def main(training: Training) -> None:
